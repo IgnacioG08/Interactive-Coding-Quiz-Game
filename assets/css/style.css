@@ -1,0 +1,69 @@
+body {
+    background-color: grey;
+    font-family: serif;
+}
+
+body header {
+    font-size: 100px;
+    text-align: center;
+    margin: 0px;
+    color: green;
+}
+
+section.gameboard {
+    background-color: green;
+    height: 750px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+    padding: 20px;
+    border: 5px solid black
+}
+
+.uppersection {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.score {
+    margin-left: 100px;
+}
+
+.timer {
+    margin-right: 100px;
+}
+
+button.button {
+    position: absolute;
+    margin-top: 35%;
+    margin-left: 32.80%;
+    height: 50px;
+    width: 200px;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+button.button:hover {
+    background-color: grey;
+    
+}
+
+section.howto {
+    border-top: 5px solid black;
+    font-size: 30px;
+  
+}
+
+ol.list {
+    display: inline-block;
+
+    
+}
+
+
+
