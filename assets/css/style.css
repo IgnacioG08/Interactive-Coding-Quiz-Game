@@ -10,7 +10,7 @@ body header {
     color: black;
 }
 
-section.gameboard {
+#gameboard {
     background-color: green;
     height: 750px;
     width: 80%;
@@ -25,42 +25,39 @@ h1 {
     border: 5px solid black
 }
 
-.uppersection {
+nav {
     display: flex;
     justify-content: space-between;
 
 }
 
-.score {
+#score {
     margin-left: 100px;
 }
 
-.timer {
+#timer {
     margin-right: 100px;
 }
 
-button.button {
-    position: absolute;
-    margin-top: 29%;
-    margin-left: 32.70%;
+#startBtn {
+    margin-top: 2%;
+    margin-left: 38%;
     height: 50px;
     width: 200px;
     box-shadow: 5px 5px 5px 5px black;
 }
 
-button.button:hover {
+#startBtn:hover {
     background-color: grey;
     
-}
-
-section.howto {
-    font-size: 30px;
-  
 }
 
 ol.list {
     display: inline-block;
 
+}
+
+.answerBtn {
     
 }
 
