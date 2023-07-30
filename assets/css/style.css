@@ -31,16 +31,16 @@ nav {
 
 }
 
-#score {
+#scoreEl {
     margin-left: 100px;
 }
 
-#timer {
+#timerEl {
     margin-right: 100px;
 }
 
-#startBtn {
-    margin-top: 2%;
+#startBtnEl {
+    margin-top: 20%;
     margin-left: 38%;
     height: 50px;
     width: 200px;
@@ -57,9 +57,18 @@ ol.list {
 
 }
 
-.answerBtn {
-    
+#questionEl {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
+
+#listEl {
+    margin-left: 400px;
+    font-size: large;
+
+}
+
 
 
 

@@ -1,5 +1,5 @@
 var timer;
-var time = 5;
+var time = 60;
 var startBtn;
 var score;
 var timeInterval;
@@ -14,29 +14,41 @@ var listEl = document.querySelector("#listEl");
 
 var questions = [
     {
-        question: "Which tag is accurate when linking JavaScript?" ,
-        answer: ["<a>", "<href>", "<src>", "<link>", "<rel>"] ,
-        correct: "<src>"
+        question : "Which tag is accurate when linking JavaScript?" ,
+        answer : ["<a>", "<href>", "<src>", "<link>", "<rel>"] ,
+        correct : "<src>"
     },
     {
         question : "Where do you place your CSS Hypertext Reference in the HTML file?" ,
         answer : ["upper <body>", "lower <body>", "querySelector", "<head>", "<header>"] ,
-        correct: "<head>"
+        correct : "<head>"
     },
-    {},
-    {},
-    {}
+    {
+        question : "Which is not considered a primitive type?" ,
+        answer : ["string", "bigint", "number", "null", "const"] ,
+        correct : "const"
+    },
+    {
+        question : "What is function scope" ,
+        answer : ["global", "local", "if()", "block", "else if"] ,
+        correct : "local"
+    },
+    {
+        question : "Which is a considered a variable that never changes?" ,
+        answer : ["var", "x", "let", "const", "y"] ,
+        correct : "const"
+    }
 ];
 
-function textRemoval(){
+function textRemoval() {
     while(listEl.firstChild) {
         listEl.removeChild(listEl.firstChild);
     }
 }
 
 function displayQuestion() {
-    if(q >= 4) {
-        console.log("You Win")
+    if(q >= 5) {
+        window.alert("You Win")
     } else {
     questionEl.textContent = questions[q].question;
     textRemoval();
@@ -64,7 +76,7 @@ function countDown() {
     var timerInterval = setInterval(function() {
       time--;
       timerEl.textContent = time;
-  
+
       if(time === 0) {
         
         clearInterval(timerInterval);
@@ -76,6 +88,10 @@ function countDown() {
 function startGame() {
     countDown();
     displayQuestion();
+}
+
+function endGame() {
+    
 }
 
 
