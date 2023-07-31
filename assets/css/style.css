@@ -69,6 +69,14 @@ ol.list {
 
 }
 
+#gameEnd {
+    display: none;
+}
+
+#scores {
+    display: none;
+}
+
 
 
 

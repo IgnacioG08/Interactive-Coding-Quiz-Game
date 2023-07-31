@@ -1,16 +1,18 @@
-var timer;
-var time = 60;
-var startBtn;
-var score;
-var timeInterval;
+var timerEl;
+var timeEl = 60;
+var scoreEl;
+var listEl;
+var questionEl;
+var startBtnEl;
+var timerInterval;
 var q = 0;
+var score = 0;
 
-
-var timerEl = document.querySelector("#timer");
-var scoreEl = document.querySelector("#score");
-var startBtn = document.querySelector("#startBtn");
-var questionEl = document.querySelector("#questionEl");
-var listEl = document.querySelector("#listEl");
+var startBtnEl = document.querySelector("#startBtnEl")
+var timerEl = document.querySelector("#timerEl")
+var scoreEl = document.querySelector("#scoreEl")
+var listEl = document.querySelector("#listEl")
+var questionEl = document.querySelector("#questionEl")
 
 var questions = [
     {
@@ -40,59 +42,90 @@ var questions = [
     }
 ];
 
+if(!localStorage.getItem("scores")) {
+    localStorage.setItem("scores", "");
+}
+
+function countDown() {
+timerInterval = setInterval (function() {
+timeEl--;
+timerEl.textContent = timeEl
+if(timeEl <= 0) {
+    clearInterval(timerInterval)
+}
+
+
+}, 1000)
+}
+
+function startGame() {
+    q = 0;
+    timeEl = 60;
+    document.getElementById("scores").style.display="none"
+countDown();
+displayQuestions();
+}
+
+function endGame() {
+scoreBoard();
+document.getElementById("gameEnd").style.display="block"
+clearInterval(timerInterval)
+}
+
+function displayQuestions () {
+    if(q >= 5) {
+        questionEl.textContent = "Congratulations";
+        listEl.textContent = "Game is Complete";
+
+    } else {
+        questionEl.textContent = questions[q].question
+        textRemoval()
+        for(i = 0; i < questions[q].answer.length; i++) {
+            answerBtn = document.createElement("button");
+            listEl.appendChild(answerBtn)
+            answerBtn.textContent = questions[q].answer[i]
+            answerBtn.addEventListener("click", function(event){
+                if(event.target.textContent === questions[q].correct) {
+                    score++
+                    q++
+                    displayQuestions()
+                } else {
+                    timeEl = timeEl - 5; 
+                }
+                if(timeEl === 0 || q >= 5) {
+                    endGame();
+                }
+            })
+            }
+        }
+        
+    }
+
+function scoreBoard () {
+ document.getElementById("scoreEl").innerHTML = "Score: " + timeEl
+}
+
 function textRemoval() {
     while(listEl.firstChild) {
         listEl.removeChild(listEl.firstChild);
     }
 }
 
-function displayQuestion() {
-    if(q >= 5) {
-        window.alert("You Win")
-    } else {
-    questionEl.textContent = questions[q].question;
-    textRemoval();
-    for (i = 0; i < questions[q].answer.length; i ++) {
-        var answerBtn = document.createElement("button");
-        listEl.appendChild(answerBtn);
-        answerBtn.setAttribute("class", "answerBtn")
-        answerBtn.textContent = questions[q].answer[i];
-        answerBtn.addEventListener("click", function(event) {
-            if(event.target.textContent === questions[q].correct) {
-                q++
-                displayQuestion()
 
-            } else {
-                time = time - 5;
-            }
-           
-        })
-    } }
-}
+startBtnEl.addEventListener("click", function() {
+ startGame();
+})
 
-
-function countDown() {
-    
-    var timerInterval = setInterval(function() {
-      time--;
-      timerEl.textContent = time;
-
-      if(time === 0) {
-        
-        clearInterval(timerInterval);
-      }
-  
-    }, 1000);
-  }
-
-function startGame() {
-    countDown();
-    displayQuestion();
-}
-
-function endGame() {
-    
-}
-
-
-startBtn.addEventListener("click", startGame);
+document.getElementById("submit").addEventListener("click", function() {
+    var initials = document.getElementById("initials").value;
+    var record = initials + " " +  timeEl + "<br>";
+    var records = localStorage.getItem("scores") + record;
+    localStorage.setItem("scores", records);
+    document.getElementById("scoreboard").innerHTML = records;
+    document.getElementById("scores").style.display = "block";
+    document.getElementById("gameEnd").style.display = "none";
+   })
+   document.getElementById("clear").addEventListener("click", function() {
+    localStorage.setItem("scores", "");
+    document.getElementById("scoreboard").innerHTML = "";
+   })
