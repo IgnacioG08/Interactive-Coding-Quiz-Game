@@ -47,7 +47,7 @@ nav {
     box-shadow: 5px 5px 5px 5px black;
 }
 
-#startBtn:hover {
+#startBtnEl:hover {
     background-color: grey;
     
 }
@@ -77,6 +77,16 @@ ol.list {
     display: none;
 }
 
+#clear {
+    margin-left: 250px;
+    height: 50px;
+    width: 200px;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+#clear:hover {
+    background-color: grey; 
+}
 
 
 
